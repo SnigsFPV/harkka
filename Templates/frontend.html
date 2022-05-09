@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="app">
+    <h1>Kauppalista</h1>
+    {% if taulukko|length < 1 %}
+    <h3>Lista tyhjä.</h3>
+    {% else %}
+    <table>
+        <tr>
+            <th>Tuote</th>
+            <th>Määrä</th>
+            <th>Toiminnot</th>
+        </tr>
+        {% for lampo in taulukko %}
+            <tr>
+                <td>{{ paivat[lampo.x-1] }}</td>
+                <td>{{ lampo.y }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+</body>
+</html>

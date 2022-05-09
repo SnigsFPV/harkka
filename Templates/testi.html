@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+        <div class="app">
+            <h1>Kauppalista</h1>
+            {% if tuotelista|length < 1 %}
+            <h3>Lista tyhjä.</h3>
+            {% else %}
+            <table>
+                <tr>
+                    <th>Tuote</th>
+                    <th>Määrä</th>
+                    <th>Toiminnot</th>
+                </tr>
+                {% for tuote in tuotelista %}
+                    <tr>
+                        <td>{{ tuote.id }}
+                        </td>
+                        <td>{{ tuote.nimi }}
+                        </td>
+                        <td>{{ tuote.maara }}
+                        </td>
+                        <td><a href="/poista/">Poista</a>
+                          <br>
+                          <a href="/valitse/">Valitse</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+            <h3>Lisää tuote</h3>
+            <form action="/" method="POST">
+              <div>
+                  <label for="tuote">Tuote: </label>
+                  <input type="text" name="tuote" id="tuote" required>
+              </div>
+              <div>
+                  <label for="maara">Määrä: </label>
+                  <input type="number" name="maara" id="maara" required>
+              </div>
+              <input type="submit" value="Lisää">
+              <input type="submit" value="Muuta määrä">
+          </form>
+        </div>
+    </body>
+</html>
